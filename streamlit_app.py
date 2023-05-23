@@ -21,5 +21,12 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 # We want to filter the table data based on the fruits a customer will choose, so we'll pre-populate the list to set an example for the customer. 
 streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
 
+# 🥋 Filter the Table Data
+# We'll ask our app to put the list of selected fruits into a variable called fruits_selected. Then, we'll ask our app to use the fruits in our fruits_selected list to pull rows from the full data set (and assign that data to a variable called fruits_to_show). Finally, we'll ask the app to use the data in fruits_to_show in the dataframe it displays on the page. 
+
+fruits_to_show = my_fruit_list.loc[fruits_selected]
+# If you want to know more about pandas.dataframe.loc[ ], you find more information here: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html 
+    
 # Display the table on the page.
-streamlit.dataframe(my_fruit_list)
+# original logic: streamlit.dataframe(my_fruit_list) but changed to the one below as it is dependant on the pick list.
+streamlit.dataframe(fruits_to_show)
