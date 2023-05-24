@@ -56,15 +56,13 @@ except URLError as e:
     
 # streamlit.write('The user entered ', fruit_choice)
 
-
-
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Import Snowflake Package into Your App  ▪️
 # 🥋 Check to Confirm the Snowflake Connector Package Will Add Successfully
 # Now, switch back to your streamlit_app.py file and add this line. The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
 # The line shown below will tell your py file to use the library you added to the project. 
 
 # 🥋 Add a STOP Command to Focus Our Attention
-" don't run anything past here while we troubleshoot
+# don't run anything past here while we troubleshoot
 streamlit.stop()
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
