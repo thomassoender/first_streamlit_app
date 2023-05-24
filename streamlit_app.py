@@ -35,23 +35,27 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # original logic: streamlit.dataframe(my_fruit_list) but changed to the one below as it is dependant on the pick list.
 streamlit.dataframe(fruits_to_show)
 
+# import requests
 
 #New Section to display fruityvice api response
 streamlit.header("Fruityvice Fruit Advice!")
-# Course  Lesson 9: Streamlit - Using APIs & Variables  🥋 Variables in Streamlit  ▪️
-# 🥋 Add a Text Entry Box and Send the Input to Fruityvice as Part of the API Call
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
+try:
+    # Course  Lesson 9: Streamlit - Using APIs & Variables  🥋 Variables in Streamlit  ▪️
+    # 🥋 Add a Text Entry Box and Send the Input to Fruityvice as Part of the API Call
+    fruit_choice = streamlit.text_input('What fruit would you like information about?')
+    if not fruit_choice:
+        streamlit.error("Please select a fruit to get information.")
+     else:
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+        # take the json version of the response and normalize it
+        fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+        # output it in the screen as a table
+        streamlit.dataframe(fruityvice_normalized)
+except URLError as e:
+    streamlit.error()
+    
+# streamlit.write('The user entered ', fruit_choice)
 
-# import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-# This line is deleted: streamlit.text(fruityvice_response.json()) # just writes the data to the screen
-
-
-# take the json version of the response and normalize it
-fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
-# output it in the screen as a table
-streamlit.dataframe(fruityvice_normalized)
 
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Import Snowflake Package into Your App  ▪️
