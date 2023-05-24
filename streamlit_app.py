@@ -48,3 +48,11 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # output it in the screen as a table
 streamlit.dataframe(fruityvice_normalized)
+
+
+# Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Import Snowflake Package into Your App  ▪️
+# 🥋 Check to Confirm the Snowflake Connector Package Will Add Successfully
+# Now, switch back to your streamlit_app.py file and add this line. The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
+# The line shown below will tell your py file to use the library you added to the project. 
+
+import snowflake.connector
