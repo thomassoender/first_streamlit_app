@@ -70,7 +70,9 @@ streamlit.dataframe(my_data_rows)
     
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🎯 Streamlit Challenge Lab!  ▪️
 # 🎯 Can You Add A Second Text Entry Box? 
-
+# Allow the end user to add a fruit to the list
+add_my_fruit = streamlit.text_input('What would you like to add?','Jackfruit')
+streamlit.write('Thanks for adding ', add_my_fruit)
 
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
