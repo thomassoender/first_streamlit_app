@@ -67,10 +67,6 @@ except URLError as e:
 # Now, switch back to your streamlit_app.py file and add this line. The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
 # The line shown below will tell your py file to use the library you added to the project. 
 
-# 🥋 Add a STOP Command to Focus Our Attention
-# don't run anything past here while we troubleshoot
-streamlit.stop()
-
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
 # 🥋 Let's Query Our Trial Account Metadata 
 
@@ -91,7 +87,10 @@ if streamlit.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     streamlit.dataframe(my_data_rows)
    
-    
+# 🥋 Add a STOP Command to Focus Our Attention
+# don't run anything past here while we troubleshoot
+streamlit.stop()
+
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🎯 Streamlit Challenge Lab!  ▪️
 # 🎯 Can You Add A Second Text Entry Box? 
 # Allow the end user to add a fruit to the list
