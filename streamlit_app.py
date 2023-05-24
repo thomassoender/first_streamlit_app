@@ -40,7 +40,7 @@ fruit_choice = streamlit.text_input('What fruit would you like information about
 streamlit.write('The user entered ', fruit_choice)
 
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choise)
 # This line is deleted: streamlit.text(fruityvice_response.json()) # just writes the data to the screen
 
 
@@ -68,6 +68,9 @@ streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
     
     
+# Course  Lesson 12: Streamlit, but with Snowflake Added  🎯 Streamlit Challenge Lab!  ▪️
+# 🎯 Can You Add A Second Text Entry Box? 
+
 
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
