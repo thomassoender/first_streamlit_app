@@ -57,6 +57,18 @@ streamlit.dataframe(fruityvice_normalized)
 
 import snowflake.connector
 
+# Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Query a Snowflake Table from Streamlit  ▪️
+# 🥋 Let's Query Some Data, Instead
+
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.curser()
+my_cur.execute("select * from fruit_load_list")
+my_data_row = my_cur.fetchone()
+streamlit.text("The fruit load list contains:")
+streamlit.text(my_data_row)
+    
+    
+
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
 # 🥋 Let's Query Our Trial Account Metadata 
