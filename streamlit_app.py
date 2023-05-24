@@ -89,7 +89,7 @@ if streamlit.button('Get Fruit Load List'):
    
 # 🥋 Add a STOP Command to Focus Our Attention
 # don't run anything past here while we troubleshoot
-streamlit.stop()
+# streamlit.stop()
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🎯 Streamlit Challenge Lab!  ▪️
 # 🎯 Can You Add A Second Text Entry Box? 
