@@ -37,7 +37,6 @@ streamlit.dataframe(fruits_to_show)
 
 # import requests
 
-
 # create the repeatable code block (called a function)
 def get_fruityvice_data(this_fruit_choice):
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
@@ -75,23 +74,23 @@ streamlit.stop()
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Connect to Snowflake from Streamlit  ▪️
 # 🥋 Let's Query Our Trial Account Metadata 
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
-my_data_row = my_cur.fetchone()
-# streamlit.text("Hello from Snowflake:")
-# streamlit.text(my_data_row)
 
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🥋 Query a Snowflake Table from Streamlit  ▪️
 # 🥋 Let's Query Some Data, Instead
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
-my_data_rows = my_cur.fetchall() # fetches only one row instead of all rows: my_data_row = my_cur.fetchone()
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)
-    
+# Snowflake-related functions
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+         my_cur.execute("select * from fruit_load_list")
+         return my_cur.fetchall()
+
+# Add a button to load the fruit
+if streamlit.button('Get Fruit Load List'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    streamlit.dataframe(my_data_rows)
+   
     
 # Course  Lesson 12: Streamlit, but with Snowflake Added  🎯 Streamlit Challenge Lab!  ▪️
 # 🎯 Can You Add A Second Text Entry Box? 
